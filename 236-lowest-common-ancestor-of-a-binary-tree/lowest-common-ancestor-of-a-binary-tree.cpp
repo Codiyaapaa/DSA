@@ -28,15 +28,11 @@ public:
         for(auto it: path1) cout<<it->val<<" ";
         cout<<endl;
         for(auto it: path2) cout<<it->val<<" ";
-        TreeNode* ans = root;
-        int i = 0;
-        int j = 0;
-        int n = path1.size();
-        int m = path2.size();
-        while(i<n && j<m){
-            if(path1[i] == path2[j]) ans = path1[i];
-            i++;
-            j++;
+        TreeNode* ans = NULL;
+        int mini = min(path1.size(),path2.size());
+        for(int i=0; i<mini; i++){
+            if(path1[i] == path2[i]) ans = path1[i];
+            else break;
         }
         return ans;
     }

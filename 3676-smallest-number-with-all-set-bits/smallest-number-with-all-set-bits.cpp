@@ -1,11 +1,19 @@
 class Solution {
 public:
     int smallestNumber(int n) {
-        for(int i=1; i<=n; i++){
-            int a = pow(2,i)-1;
-            // cout<<a<<" ";
-            if(a >= n) return a;
+        int digit = 0 ;
+        while(n){
+            n/=2;
+            digit++;
         }
-        return 0;
+        //cout << digit << endl;
+
+        int ans = 0 ;
+        int a = 0 ;
+        while(digit--){
+            ans += pow(2 , a);
+            a++;
+        }
+        return ans ;
     }
 };

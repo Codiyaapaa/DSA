@@ -25,7 +25,7 @@ public:
             st1.push(i);
         }
         // for(auto it : left) cout<<it<<" ";
-        cout<<endl;
+        // cout<<endl;
         //right
         vector<int> right;
         stack<int> st;

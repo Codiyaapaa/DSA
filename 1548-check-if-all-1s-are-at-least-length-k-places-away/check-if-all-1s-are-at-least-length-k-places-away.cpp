@@ -6,7 +6,6 @@ public:
         for(int i=0; i<nums.size(); i++){
             if(nums[i] == 0) cnt++;
             else{
-                // cout<<cnt<<" ";
                 if(flag && cnt < k) return false;
                 flag = true;
                 cnt = 0;

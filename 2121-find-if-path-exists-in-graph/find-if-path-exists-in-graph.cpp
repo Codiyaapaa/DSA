@@ -17,6 +17,14 @@ public:
         }
     }
 
+    void dfs(int source, vector<int>& vis, vector<int> adj[]){
+        vis[source] = 1;
+
+        for(auto it : adj[source]){
+            if(!vis[it]) dfs(it,vis,adj);
+        }
+    }
+
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
         vector<int> adj[n];
         for(auto it : edges){
@@ -26,8 +34,8 @@ public:
             adj[b].push_back(a);
         }
         vector<int> vis(n,0);
-        // dfs();
-        bfs(source,vis,adj);
+        dfs(source,vis,adj);
+        // bfs(source,vis,adj);
         return vis[destination];
     }
 };

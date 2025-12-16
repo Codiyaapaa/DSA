@@ -7,7 +7,7 @@ public:
         for(auto it : chars){
             if(it == prev) cnt++;
             else{
-                cout<<prev<<" "<<cnt<<endl;
+                // cout<<prev<<" "<<cnt<<endl;
                 if(prev != ' '){
                     chars[write++] = prev;
                     if(cnt != 1){
@@ -30,7 +30,7 @@ public:
                 }
             }
         }
-        cout<<prev<<" "<<cnt;
+        // cout<<prev<<" "<<cnt;
         return write;
     }
 };

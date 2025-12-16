@@ -10,9 +10,11 @@ public:
         int even = 0;
         int odd = n-1;
         while(even < odd){
-            while(even<odd && nums[even]%2==0) even++;
-            while(odd>even && nums[odd]%2==1) odd--;
-            swap(nums[even],nums[odd]);
+            while(even<n && nums[even]%2==0) even++;
+            while(odd>=0 && nums[odd]%2==1) odd--;
+            // cout<<even<<" "<<odd<<endl;
+            // cout<<nums[even]<<" "<<nums[odd]<<endl;
+            if(even < odd) swap(nums[even++],nums[odd--]);
         }
         return nums;
     }

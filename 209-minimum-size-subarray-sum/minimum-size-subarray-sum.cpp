@@ -6,20 +6,14 @@ public:
         int j=0;
         int sum = 0;
         int n = nums.size();
-        while(j<n || sum >= k){
-            if(sum >= k){
-                len = min(len,j-i);
+        while(j<n){
+            sum += nums[j];
+            while(sum >= k){
+                len = min(len,j-i+1);
                 sum -= nums[i];
                 i++;
             }
-            else if(sum > k){
-                sum -= nums[i];
-                i++;
-            }
-            else{
-                sum += nums[j];
-                j++;
-            }
+            j++;
         }
         if(len == INT_MAX) return 0;
         return len;

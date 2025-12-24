@@ -13,7 +13,7 @@ public:
         for(auto it : pr){
             
             while(!q.empty() && q.front() < it.first) {
-                cout<<q.front()<<" "<<q.front()<<endl;
+                // cout<<q.front()<<" "<<q.front()<<endl;
                 q.pop();
             }
             q.push(it.second);

@@ -6,20 +6,33 @@ public:
         if(m<n) return false;
         vector<int> s1F(26);
         vector<int> s2F(26);
-        int i=0;
-        int j=0;
-        while(j<n){
-            s2F[s2[j]-'a']++;
-            j++;
+        // int i=0;
+        // int j=0;
+        // while(j<n){
+        //     s2F[s2[j]-'a']++;
+        //     j++;
+        // }
+        // for(auto it : s1) s1F[it-'a']++;
+        // if(s2F == s1F) return true;
+        // while(j<m){
+        //     s2F[s2[i]-'a']--;
+        //     s2F[s2[j]-'a']++;
+        //     i++;
+        //     if(s2F == s1F) return true;
+        //     j++;
+        // }
+        // return false;
+        for(auto it : s1){
+            s1F[it-'a']++;
         }
-        for(auto it : s1) s1F[it-'a']++;
-        if(s2F == s1F) return true;
-        while(j<m){
-            s2F[s2[i]-'a']--;
+        int i =0;
+        for(int j=0; j<m; j++){
             s2F[s2[j]-'a']++;
-            i++;
-            if(s2F == s1F) return true;
-            j++;
+            if(j-i+1 > n){
+                s2F[s2[i]-'a']--;
+                i++;
+            }
+            if(s1F == s2F) return true;
         }
         return false;
     }

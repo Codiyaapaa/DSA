@@ -11,16 +11,34 @@ public:
     }
 
     int countNegatives(vector<vector<int>>& grid) {
+        //O(nlogm)
+        // int n = grid.size();
+        // int m = grid[0].size();
+        // int sum = 0;
+        // int r = m;
+        // int ans = 0;
+        // for(int i=0; i<n; i++){
+        //     int num = bs(r,grid[i]);
+        //     ans = ans + (r-num)*(n-i);
+        //     cout<<num<<" "<<r<<" ";
+        //     r = num;
+        // }
+        // return ans;
+
+        // O(n+m)
         int n = grid.size();
         int m = grid[0].size();
-        int sum = 0;
-        int r = m;
+
+        int row = 0;
+        int col = m-1;
         int ans = 0;
-        for(int i=0; i<n; i++){
-            int num = bs(r,grid[i]);
-            ans = ans + (r-num)*(n-i);
-            cout<<num<<" "<<r<<" ";
-            r = num;
+        while(row<n && col>=0){
+            if(grid[row][col] < 0){
+                ans += (n-row);
+                col--;
+            }else{
+                row++;
+            }
         }
         return ans;
     }

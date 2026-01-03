@@ -1,5 +1,16 @@
 class Solution {
 public:
+    int lower(vector<int> arr, int tar){
+        int l=0;
+        int r=arr.size();
+        while(l<r){
+            int mid = l+(r-l)/2;
+            if(arr[mid]<tar) l = mid + 1;
+            else r = mid;
+        }
+        return l;
+    }
+
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
         // method 1 : using priority_queue
         // priority_queue<pair<int,int>> pq;
@@ -15,17 +26,38 @@ public:
         // sort(ans.begin(),ans.end());
         // return ans;
 
-        //using two pointer
-        int i=0;
-        int j=arr.size()-1;
-        // cout<<i<<" "<<j<<endl;
-        while(j-i+1 > k){
-            if(abs(arr[i]-x) > abs(arr[j]-x)){
-                i++;
+        //method 2: using two pointer
+        // int i=0;
+        // int j=arr.size()-1;
+        // // cout<<i<<" "<<j<<endl;
+        // while(j-i+1 > k){
+        //     if(abs(arr[i]-x) > abs(arr[j]-x)){
+        //         i++;
+        //     }
+        //     else j--;
+        // }
+        // // cout<<i<<" "<<j;
+        // return vector<int>(arr.begin()+i,arr.begin()+j+1);
+
+        // method 3: binary search
+        int r = lower(arr,x);
+        int l = r-1;
+        int n = arr.size();
+        while(k--){
+            if (l < 0) {
+                r++;
+            } 
+            else if (r >= n) {
+                l--;
+            } 
+            else if (x - arr[l] <= arr[r] - x) {
+                l--;
+            } 
+            else {
+                r++;
             }
-            else j--;
         }
-        // cout<<i<<" "<<j;
-        return vector<int>(arr.begin()+i,arr.begin()+j+1);
+        // cout<<lb;
+        return vector<int>(arr.begin()+l+1,arr.begin()+r);
     }
 };
